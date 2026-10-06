@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RR Munck — Transporte de Cargas, Içamentos e Movimentação de Equipamentos | Ceará</title>
+<meta name="description" content="RR Munck: especialistas em caminhão Munck, içamentos e transporte de cargas pesadas no Ceará. Mais de 20 anos de experiência, frota própria e atendimento 24h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0D0F12;
+    --bg2: #171A1F;
+    --card: #1F232B;
+    --red: #E31923;
+    --red-hover: #FF3A44;
+    --white: #FFFFFF;
+    --text-sec: #C6CBD2;
+    --border: #2E333B;
+    --success: #22C55E;
+    --ff-title: 'Barlow Condensed', sans-serif;
+    --ff-body: 'Barlow', sans-serif;
+  }
+
+  .rr-page {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--ff-body);
+    width: 100%;
+    min-width: 320px;
+  }
+
+  /* ── NAV ── */
+  .rr-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,15,18,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .rr-logo {
+    font-family: var(--ff-title);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .rr-logo span { color: var(--red); }
+  .rr-nav-links { display: flex; gap: 28px; align-items: center; }
+  .rr-nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-sec);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .rr-nav-links a:hover { color: var(--white); }
+  .rr-btn-nav {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 8px 20px;
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background 0.2s;
+  }
+  .rr-btn-nav:hover { background: var(--red-hover); }
+
+  /* ── HAMBURGUER (mobile) ── */
+  .rr-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+  }
+  .rr-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--white);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .rr-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .rr-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .rr-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .rr-nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(13,15,18,0.98);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .rr-nav-overlay.active { opacity: 1; visibility: visible; }
+  .rr-nav-overlay a {
+    font-family: var(--ff-title);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+  }
+  .rr-nav-overlay a:hover { color: var(--red); }
+  .rr-nav-overlay .rr-btn-nav { font-size: 15px; padding: 12px 28px; margin-top: 12px; }
+  .rr-nav-overlay-close {
+    position: absolute;
+    top: 22px; right: 6%;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── HERO ── */
+  .rr-hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 6% 80px;
+    background:
+      linear-gradient(135deg, rgba(13,15,18,0.97) 0%, rgba(22,26,32,0.88) 50%, rgba(32,38,46,0.82) 100%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(46,51,59,0.18) 80px,
+        rgba(46,51,59,0.18) 81px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(46,51,59,0.12) 80px,
+        rgba(46,51,59,0.12) 81px
+      );
+  }
+  .rr-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(227,25,35,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .rr-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(227,25,35,0.12);
+    border: 1px solid rgba(227,25,35,0.3);
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+  .rr-hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse-dot 1.8s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+  .rr-hero h1 {
+    font-family: var(--ff-title);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    max-width: 820px;
+    margin-bottom: 24px;
+  }
+  .rr-hero h1 em { color: var(--red); font-style: normal; }
+  .rr-hero p {
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: var(--text-sec);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .rr-hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .rr-btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: var(--white); border: none;
+    padding: 14px 28px; font-family: var(--ff-body); font-size: 14px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .rr-btn-primary:hover { background: var(--red-hover); transform: translateY(-1px); }
+  .rr-btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--white); border: 1px solid var(--border);
+    padding: 14px 28px; font-family: var(--ff-body); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .rr-btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.04); }
+
+  .rr-hero-stats {
+    display: flex; gap: 0; flex-wrap: wrap; margin-top: 64px;
+    border-top: 1px solid var(--border); padding-top: 36px;
+  }
+  .rr-stat {
+    padding: 0 40px 0 0;
+    border-right: 1px solid var(--border);
+    margin-right: 40px;
+  }
+  .rr-stat:last-child { border-right: none; }
+  .rr-stat-num {
+    font-family: var(--ff-title);
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .rr-stat-num span { color: var(--red); }
+  .rr-stat-label {
+    font-size: 12px;
+    color: var(--text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* ── SECTION BASE ── */
+  .rr-section {
+    padding: 90px 6%;
+    border-top: 1px solid var(--border);
+  }
+  .rr-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .rr-section-title {
+    font-family: var(--ff-title);
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 900;
+    line-height: 1.0;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .rr-section-sub {
+    font-size: 15px;
+    color: var(--text-sec);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* ── SOBRE ── */
+  .rr-sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 56px;
+  }
+  .rr-sobre-text p {
+    font-size: 15px;
+    color: var(--text-sec);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .rr-sobre-text p strong { color: var(--white); font-weight: 600; }
+  .rr-sobre-img {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rr-sobre-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(227,25,35,0.06) 0%, transparent 60%);
+  }
+  .rr-sobre-icon {
+    font-size: 64px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .rr-sobre-img-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-sec);
+    position: relative;
+    z-index: 1;
+  }
+  .rr-sobre-corner {
+    position: absolute;
+    top: 16px; left: 16px;
+    width: 32px; height: 32px;
+    border-top: 2px solid var(--red);
+    border-left: 2px solid var(--red);
+  }
+  .rr-sobre-corner-br {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    width: 32px; height: 32px;
+    border-bottom: 2px solid var(--red);
+    border-right: 2px solid var(--red);
+  }
+
+  /* ── SERVIÇOS ── */
+  .rr-servicos-section { background: var(--bg); }
+  .rr-servicos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+  .rr-servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    background: transparent;
+    border: none;
+  }
+  .rr-service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .rr-service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--red);
+    transition: width 0.35s ease;
+  }
+  .rr-service-card:hover { background: var(--bg2); border-color: rgba(227,25,35,0.4); }
+  .rr-service-card:hover::after { width: 100%; }
+  .rr-service-icon {
+    width: 44px; height: 44px;
+    background: rgba(227,25,35,0.1);
+    border: 1px solid rgba(227,25,35,0.25);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 20px;
+  }
+  .rr-service-name {
+    font-family: var(--ff-title);
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .rr-service-desc { font-size: 13px; color: var(--text-sec); line-height: 1.65; }
+
+  /* ── DIFERENCIAIS ── */
+  .rr-difs-section { background: var(--bg2); }
+  .rr-difs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .rr-dif-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: border-color 0.2s;
+  }
+  .rr-dif-card:hover { border-color: rgba(227,25,35,0.4); }
+  .rr-dif-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .rr-dif-title {
+    font-family: var(--ff-title);
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+  .rr-dif-text { font-size: 13px; color: var(--text-sec); line-height: 1.6; }
+
+  /* ── DEPOIMENTOS ── */
+  .rr-dep-section { background: var(--bg); }
+  .rr-dep-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+  .rr-dep-note {
+    font-size: 11px;
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: #F59E0B;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .rr-dep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .rr-dep-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .rr-dep-card:hover { border-color: rgba(255,255,255,0.15); }
+  .rr-stars { color: #F59E0B; font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+  .rr-dep-text { font-size: 14px; color: var(--text-sec); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+  .rr-dep-author { display: flex; align-items: center; gap: 12px; }
+  .rr-dep-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(227,25,35,0.15);
+    border: 1px solid rgba(227,25,35,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--ff-title); font-size: 15px; font-weight: 800; color: var(--red);
+  }
+  .rr-dep-name { font-size: 14px; font-weight: 600; color: var(--white); }
+  .rr-dep-city { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+
+  /* ── CTA ── */
+  .rr-cta-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 100px 6%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .rr-cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(227,25,35,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .rr-cta-label { display: inline-block; margin-bottom: 20px; }
+  .rr-cta-title {
+    font-family: var(--ff-title);
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    max-width: 740px;
+    margin: 0 auto 20px;
+    position: relative; z-index: 1;
+  }
+  .rr-cta-sub {
+    font-size: 16px;
+    color: var(--text-sec);
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .rr-cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  /* ── RODAPÉ ── */
+  .rr-footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 60px 6% 36px;
+  }
+  .rr-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+  .rr-footer-logo {
+    font-family: var(--ff-title);
+    font-size: 24px; font-weight: 900; letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .rr-footer-logo span { color: var(--red); }
+  .rr-footer-desc { font-size: 13px; color: var(--text-sec); line-height: 1.75; max-width: 280px; }
+  .rr-footer-col-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 20px;
+  }
+  .rr-footer-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--text-sec); line-height: 1.5; margin-bottom: 12px;
+  }
+  .rr-footer-item i { color: var(--red); font-size: 15px; margin-top: 1px; flex-shrink: 0; }
+  .rr-footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .rr-footer-copy { font-size: 12px; color: var(--text-sec); }
+  .rr-footer-copy span { color: var(--red); }
+  .rr-social-row { display: flex; gap: 12px; }
+  .rr-social-btn {
+    width: 40px; height: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-sec);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .rr-social-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── FLOAT WPP ── */
+  .rr-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .rr-float-label {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    animation: float-in 0.5s ease 0.8s both;
+  }
+  @keyframes float-in { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
+  .rr-float-buttons { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .rr-float-wpp {
+    width: 56px; height: 56px;
+    background: #25D366;
+    border: none;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: all 0.2s;
+    animation: bounce-in 0.5s ease 0.3s both;
+    text-decoration: none;
+  }
+  .rr-float-wpp:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+  .rr-float-wpp i { font-size: 28px; color: white; line-height: 1; }
+  .rr-float-review {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-sec);
+    cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    border-color: rgba(245,158,11,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .rr-float-review:hover { border-color: #F59E0B; color: #F59E0B; }
+  .rr-float-review i { font-size: 14px; color: #F59E0B; }
+  @keyframes bounce-in { 0%{opacity:0;transform:scale(0.5)} 70%{transform:scale(1.1)} 100%{opacity:1;transform:scale(1)} }
+
+  /* ── STRIP CREDIBILIDADE ── */
+  .rr-strip {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .rr-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 32px;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .rr-strip-item:last-child { border-right: none; }
+  .rr-strip-item i { color: var(--red); font-size: 16px; }
+  .rr-strip-item span { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-sec); }
+
+  /* ===== BASE — evitar scroll horizontal em qualquer resolução ===== */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    background: #0D0F12; /* evita flash branco no iOS ao puxar scroll */
+    -webkit-text-size-adjust: 100%;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* ===== TABLET (≤900px) ===== */
+  @media (max-width: 900px) {
+    .rr-servicos-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== MOBILE / TABLET PEQUENO (≤700px) ===== */
+  @media (max-width: 700px) {
+    /* Garante fundo escuro em toda a página mobile */
+    .rr-page, body, html { background: var(--bg) !important; }
+
+    /* Nav: esconde links de texto, mostra hamburguer */
+    .rr-nav-links { display: none; }
+    .rr-hamburger { display: flex; }
+
+    .rr-sobre-grid { grid-template-columns: 1fr; gap: 28px; }
+    .rr-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+    /* Hero: padding confortável, sem altura mínima excessiva */
+    .rr-hero { min-height: auto; padding: 48px 5% 56px; }
+    .rr-hero h1 { font-size: clamp(36px, 10vw, 52px); }
+    .rr-hero p { font-size: 15px; }
+    .rr-hero-stats { margin-top: 40px; padding-top: 28px; }
+
+    /* Estatísticas em grade 2x2 */
+    .rr-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 12px;
+    }
+    .rr-hero-stats .rr-stat {
+      padding: 14px;
+      margin-right: 0;
+      border-right: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .rr-stat-num { font-size: 30px; }
+
+    /* Botões do hero e do CTA final empilhados e largura total */
+    .rr-hero-cta, .rr-cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .rr-hero-cta button, .rr-cta-buttons button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Cards de serviços em 1 coluna */
+    .rr-servicos-grid { grid-template-columns: 1fr; gap: 12px; }
+    .rr-service-card { padding: 24px 20px; }
+
+    /* Diferenciais em 2 colunas no mobile */
+    .rr-difs-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .rr-dif-card { padding: 20px 16px; }
+
+    /* Depoimentos em 1 coluna */
+    .rr-dep-grid { grid-template-columns: 1fr; }
+
+    /* Strip de credibilidade: itens empilham melhor */
+    .rr-strip { gap: 0; padding: 14px 5%; }
+    .rr-strip-item { padding: 6px 14px; font-size: 11px; }
+
+    .rr-section { padding: 56px 5%; }
+    .rr-cta-section { padding: 72px 5%; }
+
+    /* Footer: melhorar espaçamento */
+    .rr-footer { padding: 48px 5% 32px; }
+    .rr-footer-bottom {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    /* Widget flutuante do WhatsApp: levemente menor e mais perto da borda */
+    .rr-float { bottom: 16px; right: 14px; }
+    .rr-float-label { font-size: 12px; padding: 7px 14px; max-width: calc(100vw - 100px); }
+    .rr-float-wpp { width: 52px; height: 52px; }
+
+    /* Sobre: esconde bloco de imagem placeholder no mobile */
+    .rr-sobre-img { height: 200px; }
+
+    /* Dep header empilhado */
+    .rr-dep-header, .rr-servicos-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Garantir alvo de toque confortável em botões/links de ação */
+  button, .rr-nav-links a, .rr-float-wpp, .rr-social-btn {
+    min-height: 44px;
+  }
+</style>
+</head>
+<body>
+
+<div class="rr-page">
+
+  <!-- NAV -->
+  <nav class="rr-nav">
+    <div class="rr-logo">RR <span>MUNCK</span></div>
+    <div class="rr-nav-links">
+      <a onclick="scrollTo('#sobre')">Sobre</a>
+      <a onclick="scrollTo('#servicos')">Serviços</a>
+      <a onclick="scrollTo('#depoimentos')">Avaliações</a>
+      <a onclick="scrollTo('#contato')">Contato</a>
+      <button class="rr-btn-nav" onclick="openWpp()">Solicitar Orçamento</button>
+    </div>
+    <button class="rr-hamburger" id="rrHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="rrNavOverlay">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENU MOBILE (overlay) -->
+  <div class="rr-nav-overlay" id="rrNavOverlay">
+    <button class="rr-nav-overlay-close" id="rrNavOverlayClose" aria-label="Fechar menu">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+    <a onclick="rrNavGo('#sobre')">Sobre</a>
+    <a onclick="rrNavGo('#servicos')">Serviços</a>
+    <a onclick="rrNavGo('#depoimentos')">Avaliações</a>
+    <a onclick="rrNavGo('#contato')">Contato</a>
+    <button class="rr-btn-nav" onclick="openWpp()">Solicitar Orçamento</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="rr-hero" id="hero">
+    <div class="rr-hero-tag">Especialistas em Içamento e Movimentação</div>
+    <h1>Movendo <em>grandes projetos</em><br>com segurança<br>e precisão</h1>
+    <p>Transporte de cargas, içamentos e movimentação de equipamentos pesados. Mais de 20 anos atendendo obras industriais e projetos de grande porte em todo o Ceará.</p>
+    <div class="rr-hero-cta">
+      <button class="rr-btn-primary" onclick="openWpp()">
+        <i class="ti ti-message-circle" aria-hidden="true"></i>
+        Solicitar Orçamento
+      </button>
+      <button class="rr-btn-outline" onclick="openWpp()">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+        Falar no WhatsApp
+      </button>
+    </div>
+    <div class="rr-hero-stats">
+      <div class="rr-stat">
+        <div class="rr-stat-num">20<span>+</span></div>
+        <div class="rr-stat-label">Anos de mercado</div>
+      </div>
+      <div class="rr-stat">
+        <div class="rr-stat-num">500<span>+</span></div>
+        <div class="rr-stat-label">Projetos entregues</div>
+      </div>
+      <div class="rr-stat">
+        <div class="rr-stat-num">24<span>h</span></div>
+        <div class="rr-stat-label">Atendimento</div>
+      </div>
+      <div class="rr-stat">
+        <div class="rr-stat-num">100<span>%</span></div>
+        <div class="rr-stat-label">Operações seguras</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="rr-strip">
+    <div class="rr-strip-item"><i class="ti ti-shield-check" aria-hidden="true"></i><span>Operações certificadas</span></div>
+    <div class="rr-strip-item"><i class="ti ti-truck" aria-hidden="true"></i><span>Frota própria moderna</span></div>
+    <div class="rr-strip-item"><i class="ti ti-clock" aria-hidden="true"></i><span>Pontualidade garantida</span></div>
+    <div class="rr-strip-item"><i class="ti ti-users" aria-hidden="true"></i><span>Equipe qualificada</span></div>
+    <div class="rr-strip-item"><i class="ti ti-map-pin" aria-hidden="true"></i><span>Atendemos todo o Ceará</span></div>
+  </div>
+
+  <!-- SOBRE -->
+  <section class="rr-section rr-sobre" id="sobre">
+    <div class="rr-section-label">Quem somos</div>
+    <div class="rr-sobre-grid">
+      <div class="rr-sobre-text">
+        <div class="rr-section-title">Mais de duas<br>décadas de<br><em style="color:var(--red);font-style:normal">excelência</em></div>
+        <p>Desde <strong>2002</strong>, a RR Munck atua com excelência no mercado de transporte de cargas, movimentação de equipamentos e serviços de içamento. Ao longo de mais de duas décadas, construímos uma trajetória marcada pela <strong>segurança, eficiência e compromisso</strong> com cada projeto.</p>
+        <p>Atendemos obras, empresas e projetos de diversos portes em todo o Ceará, com frota própria, equipe especializada e soluções sob medida para cada demanda.</p>
+        <button class="rr-btn-primary" style="margin-top:12px" onclick="openWpp()">
+          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          Falar com a equipe
+        </button>
+      </div>
+      <div class="rr-sobre-img">
+        <div class="rr-sobre-corner"></div>
+        <div class="rr-sobre-corner-br"></div>
+        <div class="rr-sobre-icon">🏗️</div>
+        <div class="rr-sobre-img-label">Frota RR Munck — Ceará</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="rr-section rr-servicos-section" id="servicos">
+    <div class="rr-servicos-header">
+      <div>
+        <div class="rr-section-label">O que fazemos</div>
+        <div class="rr-section-title">Nossos<br>serviços</div>
+      </div>
+      <div class="rr-section-sub">Soluções completas para transporte, içamento e movimentação de cargas pesadas com segurança e eficiência.</div>
+    </div>
+    <div class="rr-servicos-grid">
+      <div class="rr-service-card">
+        <div class="rr-service-icon">🏗️</div>
+        <div class="rr-service-name">Caminhão Munck</div>
+        <div class="rr-service-desc">Serviço de guindaste acoplado ao caminhão para içamento e movimentação de cargas em locais de difícil acesso.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">⚙️</div>
+        <div class="rr-service-name">Transporte de Máquinas</div>
+        <div class="rr-service-desc">Transporte seguro de máquinas industriais, equipamentos de grande porte e maquinário pesado.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">🏭</div>
+        <div class="rr-service-name">Transporte Industrial</div>
+        <div class="rr-service-desc">Soluções logísticas para indústrias, com planejamento de rotas, escolta e suporte técnico especializado.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">⛓️</div>
+        <div class="rr-service-name">Içamentos</div>
+        <div class="rr-service-desc">Operações de içamento com equipamentos modernos, operadores certificados e máxima segurança operacional.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">📦</div>
+        <div class="rr-service-name">Carga e Descarga</div>
+        <div class="rr-service-desc">Serviço de carga e descarga de materiais pesados com agilidade, cuidado e equipe treinada.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">🔩</div>
+        <div class="rr-service-name">Movimentação de Equipamentos</div>
+        <div class="rr-service-desc">Reposicionamento de equipamentos em plantas industriais, galpões e canteiros de obras.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">🏗️</div>
+        <div class="rr-service-name">Apoio para Obras</div>
+        <div class="rr-service-desc">Suporte logístico completo para obras civis, com disponibilidade de frota e equipe durante toda a execução.</div>
+      </div>
+      <div class="rr-service-card">
+        <div class="rr-service-icon">🚛</div>
+        <div class="rr-service-name">Transporte Especializado</div>
+        <div class="rr-service-desc">Transporte de cargas especiais com acompanhamento técnico, escolta e documentação completa.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="rr-section rr-difs-section" id="diferenciais">
+    <div class="rr-section-label">Por que nos escolher</div>
+    <div class="rr-section-title" style="max-width:600px">Nossos<br>diferenciais</div>
+    <div class="rr-difs-grid">
+      <div class="rr-dif-card">
+        <i class="ti ti-clock-hour-4 rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">+20 anos</div>
+        <div class="rr-dif-text">Experiência consolidada e reconhecida em todo o mercado cearense.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-shield-check rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Segurança total</div>
+        <div class="rr-dif-text">Todas as operações seguem rigorosos protocolos de segurança e NRs vigentes.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-users rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Equipe qualificada</div>
+        <div class="rr-dif-text">Operadores treinados, certificados e com vasta experiência em campo.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-bolt rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Resposta rápida</div>
+        <div class="rr-dif-text">Atendimento ágil para emergências e projetos com prazos apertados.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-truck rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Frota moderna</div>
+        <div class="rr-dif-text">Equipamentos revisados, com manutenção preventiva e documentação em dia.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-calendar-check rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Compromisso com prazos</div>
+        <div class="rr-dif-text">Planejamento rigoroso para garantir a entrega dentro do cronograma combinado.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-adjustments rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Soluções sob medida</div>
+        <div class="rr-dif-text">Cada projeto é avaliado individualmente para a solução mais eficiente.</div>
+      </div>
+      <div class="rr-dif-card">
+        <i class="ti ti-map-pin rr-dif-icon" aria-hidden="true" style="color:var(--red)"></i>
+        <div class="rr-dif-title">Cobertura no Ceará</div>
+        <div class="rr-dif-text">Atendemos todo o estado com logística eficiente e frota disponível.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="rr-section rr-dep-section" id="depoimentos">
+    <div class="rr-dep-header">
+      <div>
+        <div class="rr-section-label">Prova social</div>
+        <div class="rr-section-title">O que nossos<br>clientes dizem</div>
+      </div>
+      <div class="rr-dep-note">⚠ Conteúdo temporário — integrar avaliações reais</div>
+    </div>
+    <div class="rr-dep-grid">
+      <div class="rr-dep-card">
+        <div class="rr-stars">★★★★★</div>
+        <div class="rr-dep-text">"Contratei a RR Munck para içamento de um equipamento pesado na nossa fábrica. Equipe pontual, profissional e que priorizou a segurança em todas as etapas. Recomendo sem hesitar."</div>
+        <div class="rr-dep-author">
+          <div class="rr-dep-avatar">MO</div>
+          <div>
+            <div class="rr-dep-name">Marcos Oliveira</div>
+            <div class="rr-dep-city">Fortaleza, CE</div>
+          </div>
+        </div>
+      </div>
+      <div class="rr-dep-card">
+        <div class="rr-stars">★★★★★</div>
+        <div class="rr-dep-text">"Excelente serviço de transporte de máquinas. Cumpriram o prazo combinado, equipe muito educada e atenciosa. Com certeza vou chamar novamente para os próximos projetos."</div>
+        <div class="rr-dep-author">
+          <div class="rr-dep-avatar">AC</div>
+          <div>
+            <div class="rr-dep-name">Ana Carolina Souza</div>
+            <div class="rr-dep-city">Maracanaú, CE</div>
+          </div>
+        </div>
+      </div>
+      <div class="rr-dep-card">
+        <div class="rr-stars">★★★★★</div>
+        <div class="rr-dep-text">"Nossa obra estava parada por falta de um serviço de içamento de qualidade. A RR Munck resolveu em menos de 24h. Serviço impecável, preço justo e muita segurança."</div>
+        <div class="rr-dep-author">
+          <div class="rr-dep-avatar">RF</div>
+          <div>
+            <div class="rr-dep-name">Ricardo Ferreira</div>
+            <div class="rr-dep-city">Caucaia, CE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="rr-cta-section" id="contato">
+    <div class="rr-cta-label rr-section-label">Pronto para começar?</div>
+    <div class="rr-cta-title">Precisa de um<br>caminhão Munck<br><em style="color:var(--red);font-style:normal">para sua obra?</em></div>
+    <p class="rr-cta-sub">Nossa equipe está pronta para atender seu projeto com rapidez, segurança e eficiência. Solicite um orçamento agora mesmo.</p>
+    <div class="rr-cta-buttons">
+      <button class="rr-btn-primary" style="padding:16px 36px;font-size:15px" onclick="openWpp()">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+        Solicitar orçamento agora
+      </button>
+      <button class="rr-btn-outline" style="padding:16px 36px;font-size:15px" onclick="openWpp()">
+        <i class="ti ti-phone" aria-hidden="true"></i>
+        (85) 98696-9363
+      </button>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="rr-footer">
+    <div class="rr-footer-grid">
+      <div>
+        <div class="rr-footer-logo">RR <span>MUNCK</span></div>
+        <p class="rr-footer-desc">Especialistas em transporte de cargas, içamentos e movimentação de equipamentos pesados desde 2002. Atendemos todo o Ceará com segurança e eficiência.</p>
+      </div>
+      <div>
+        <div class="rr-footer-col-title">Contato</div>
+        <div class="rr-footer-item"><i class="ti ti-phone" aria-hidden="true"></i><span><a href="tel:+5585986969363" style="color:inherit;text-decoration:none">(85) 98696-9363</a></span></div>
+        <div class="rr-footer-item"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i><span><a href="https://wa.me/5585986969363" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">WhatsApp disponível</a></span></div>
+        <div class="rr-footer-item"><i class="ti ti-map-pin" aria-hidden="true"></i><span>Fortaleza — CE<br>Atendemos todo o Ceará</span></div>
+        <div class="rr-footer-item"><i class="ti ti-clock" aria-hidden="true"></i><span>Seg–Sáb: 7h às 18h<br>Atendimento de emergência 24h</span></div>
+      </div>
+      <div>
+        <div class="rr-footer-col-title">Serviços</div>
+        <div class="rr-footer-item"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Caminhão Munck</span></div>
+        <div class="rr-footer-item"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Içamentos</span></div>
+        <div class="rr-footer-item"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Transporte de Máquinas</span></div>
+        <div class="rr-footer-item"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Transporte Industrial</span></div>
+        <div class="rr-footer-item"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Apoio para Obras</span></div>
+      </div>
+    </div>
+    <div class="rr-footer-bottom">
+      <div class="rr-footer-copy">© 2024 <span>RR Munck</span>. Todos os direitos reservados.</div>
+      <div class="rr-social-row">
+        <a class="rr-social-btn" aria-label="Instagram" href="https://www.instagram.com/rrmunck?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="rr-social-btn" aria-label="Facebook" href="https://www.facebook.com/share/1AERuH1UrW" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a class="rr-social-btn" aria-label="WhatsApp" href="https://wa.me/5585986969363" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FLOAT WPP -->
+<div class="rr-float">
+  <div class="rr-float-label">Olá! 👋 Como podemos ajudar?</div>
+  <div class="rr-float-buttons">
+    <button class="rr-float-review" onclick="scrollToSection('depoimentos')" aria-label="Ver avaliações">
+      <i class="ti ti-star" aria-hidden="true"></i>
+      Ver avaliações
+    </button>
+    <button class="rr-float-wpp" onclick="openWpp()" aria-label="Abrir WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  function openWpp() {
+    window.open('https://wa.me/5585986969363', '_blank', 'noopener,noreferrer');
+  }
+  function scrollTo(id) {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ── Menu hamburguer (mobile) ── */
+  const rrHamburger = document.getElementById('rrHamburger');
+  const rrNavOverlay = document.getElementById('rrNavOverlay');
+  const rrNavOverlayClose = document.getElementById('rrNavOverlayClose');
+
+  function rrOpenMenu() {
+    rrNavOverlay.classList.add('active');
+    rrHamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function rrCloseMenu() {
+    rrNavOverlay.classList.remove('active');
+    rrHamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  function rrNavGo(id) {
+    rrCloseMenu();
+    setTimeout(() => scrollTo(id), 200);
+  }
+
+  if (rrHamburger && rrNavOverlay) {
+    rrHamburger.addEventListener('click', () => {
+      const isOpen = rrNavOverlay.classList.contains('active');
+      isOpen ? rrCloseMenu() : rrOpenMenu();
+    });
+    rrNavOverlayClose.addEventListener('click', rrCloseMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') rrCloseMenu();
+    });
+  }
+
+  /* ── Fallback de ícones (caso o CDN de fontes seja bloqueado) ── */
+  (function () {
+    const iconFallbackMap = {
+      'ti-message-circle': '💬',
+      'ti-brand-whatsapp': '📞',
+      'ti-arrow-right': '→',
+      'ti-shield-check': '🛡️',
+      'ti-truck': '🚚',
+      'ti-clock': '🕐',
+      'ti-users': '👥',
+      'ti-map-pin': '📍',
+      'ti-clock-hour-4': '🕓',
+      'ti-bolt': '⚡',
+      'ti-calendar-check': '📅',
+      'ti-adjustments': '⚙️',
+      'ti-star': '⭐',
+      'ti-phone': '📞',
+      'ti-brand-instagram': '📷',
+      'ti-brand-facebook': '👍',
+      'ti-chevron-right': '›',
+      'ti-x': '✕'
+    };
+
+    function tablerIconsLoaded() {
+      try {
+        return Array.from(document.fonts).some(f => f.family.toLowerCase().includes('tabler') && f.status === 'loaded');
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function applyIconFallback() {
+      if (tablerIconsLoaded()) return;
+      document.querySelectorAll('i.ti').forEach(icon => {
+        const cls = Array.from(icon.classList).find(c => c !== 'ti' && iconFallbackMap[c]);
+        if (cls) {
+          const span = document.createElement('span');
+          span.textContent = iconFallbackMap[cls];
+          span.setAttribute('aria-hidden', 'true');
+          span.className = icon.className;
+          span.style.fontStyle = 'normal';
+          icon.replaceWith(span);
+        }
+      });
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      setTimeout(applyIconFallback, 2500);
+    }
+  })();
+</script>
+</body>
+</html>
